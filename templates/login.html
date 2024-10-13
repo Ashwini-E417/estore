@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-12">
+                <a href="/index">Home</a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4 shadow mt-5 p-4 mx-auto">
+                <h2 class="text-center">Login</h2>
+                {% if errmsg %}
+                <div class="alert alert-danger mt-3">
+                    {{errmsg}}
+                </div>
+                {% endif %}
+                <form action="/ulogin" method="POST">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="uname" class="form-label">Username:</label>
+                        <input type="email" name="uname" class="form-control" placeholder="Enter username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="upass" class="form-label">Password:</label>
+                        <input type="password" name="upass" class="form-control" placeholder="Enter username">
+                    </div>
+                    <div class="mb-3 text-center">
+                        <input type="submit" value="Login" class="btn btn-success"><br>
+                        Not a user? <a href="/register">Register</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

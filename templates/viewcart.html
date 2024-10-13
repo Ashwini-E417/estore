@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'main' %}
+<div class="row mt-5">
+    <!--customer and product details-->
+    <div class="col-md-9">
+        <h5 class="bg-danger text-white p-2">Customer Details</h5>
+        <p><b>Name:</b>&nbsp;&nbsp;&nbsp;{{name}}</p>
+        <p><b>Mobile Num:</b>&nbsp;&nbsp;&nbsp;88888888</p>
+        <p><b>Email:</b>&nbsp;&nbsp;&nbsp;{{email}}</p>
+
+        {% for x in data %}
+
+        <div class="row mt-2">
+            <div class="col-md-4">
+                <img src="{{x.pid.pimage.url}}" width="250p" height="250px">
+            </div>
+            <div class="col-md-8">
+                <p><b>Product Name:</b>&nbsp;&nbsp;&nbsp;{{x.pid.name}}</p>
+                <p><b>Price:</b>&nbsp;&nbsp;&nbsp;Rs. {{x.pid.price}}</p>
+                <p><b>Category:</b>&nbsp;&nbsp;&nbsp;{{x.pid.cat}}</p>
+                <p><b>Product Description:</b>&nbsp;&nbsp;&nbsp; {{x.pid.pdetails}}</p>
+                <a href=""><button class="btn btn-danger">Remove</button></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!--amount details-->
+    <div class="col-md-3">
+        <h5 class="bg-danger text-white p-2">Total Amount</h5>
+        <p><b>Total(2 items):</b>Rs. 40000</p>
+        <hr>
+        <p><b>Total Amount:</b>Rs. 40000</p>
+        <a href=""><button class="btn btn-danger">Place Order</button></a>
+    </div>
+</div>
+
+{% endblock 'main' %}

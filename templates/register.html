@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <a href="/index">Home</a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-4 shadow mt-5 p-4 mx-auto">
+                <h2 class="text-center">Register</h2>
+                {% if errmsg %}
+                <div class="alert alert-danger mt-3">
+                    {{errmsg}}
+                </div>
+                {% endif %}
+
+                {% if successmsg %}
+                <div class="alert alert-success mt-3">
+                    {{successmsg}}
+                </div>
+                {% endif %}
+                
+                <form action="/register" method="POST">
+                    {% csrf_token %}
+                    <!--username-->
+                    <div class="mb-3">
+                        <label for="uname" class="form-label">Username:</label>
+                        <input type="email" name="uname" class="form-control" id="uname" placeholder="Enter username">
+                    </div>
+                    <!--password-->
+                    <div class="mb-3">
+                        <label for="upass" class="form-label">Password:</label>
+                        <input type="password" name="upass" class="form-control" id="upass" placeholder="Enter password">
+                    </div>
+                    <!--confirm password-->
+                    <div class="mb-3">
+                        <label for="ucpass" class="form-label">Confirm Password:</label>
+                        <input type="password" name="ucpass" class="form-control" id="ucpass" placeholder="Enter password">
+                    </div>
+                    <div class="mb-3 text-center" >
+                        <input type="submit" class="btn btn-success" value="Register"><br>
+                        Already a User? <a href="/ulogin">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
